@@ -29,6 +29,12 @@
 
 - `"What is the capital of France?"` hardcoded in the script.
 
+```mermaid
+graph TD;
+    A[User Input] --> B[LLM API];
+    B --> C[Ouput];
+```
+
 ---
 
 ### v2 — Prompt in Terminal
