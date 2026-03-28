@@ -83,10 +83,9 @@ prompt ──► LLM API ──► response
 
 ### Stage 2 — Terminal Input
 
-**Goal:**  
 Accept user input from the terminal and send it to the LLM.
 
-**Diagram:**
+> Limitation: No memory — each input is a fresh API call with no conversation history.
 
 ```
 user input ──► LLM API ──► response
@@ -94,17 +93,13 @@ user input ──► LLM API ──► response
      └─────────────────────────┘
 ```
 
-**Limitation:**  
-No memory — each input is a fresh API call with no conversation history.
-
 ---
 
 ### Stage 3 — Conversation Memory
 
-**Goal:**  
 Save conversation history by sending the full context on every API request.
 
-**Diagram:**
+> Limitation: Response depends on prompt without persistent format.
 
 ```
 user input ──► [ history + new input ] ──► LLM API ──► response
@@ -112,35 +107,27 @@ user input ──► [ history + new input ] ──► LLM API ──► respons
                         └──────────────────────────────────┘
 ```
 
-**Limitation:**  
-Response depends on prompt without persistent format.
-
 ---
 
 ### Stage 4 — System & User Prompts
 
-**Goal:**  
 Control LLM behavior and output format via a dedicated system prompt.
 
-**Diagram:**
+> **Limitation:** Outputs text only — the LLM cannot call tools or take actions.
 
 ```
-user input ──► [ system prompt + history + new input ] ──► LLM API ──► response
+user input ──► [ system prompt + history + new prompt ] ──► LLM API ──► response
                                 ▲                                          │
                                 └──────────────────────────────────────────┘
 ```
-
-**Limitation:**  
-Outputs text only — the LLM cannot call tools or take actions.
 
 ---
 
 ### Stage 5 — Tool Calling
 
-**Goal:**  
 Enable the LLM to interact with the external world by calling tools.
 
-**Diagram:**
+> **Limitation:** System prompt is hardcoded in the program — behavior cannot be changed without modifying the source code.
 
 ```
 user input ──► [ system prompt + history + new input ] ──► LLM API ───┬──► text ─────────────┐
@@ -152,17 +139,13 @@ user input ──► [ system prompt + history + new input ] ──► LLM API �
                                └───────────────────────────────────────────────┴─────────────┘
 ```
 
-**Limitation:**  
-System prompt is hardcoded in the program — behavior cannot be changed without modifying the source code.
-
 ---
 
 ### Stage 6 — Packages as Skills
 
-**Goal:**  
 Shift from hardcoded behavior to configuration-driven behavior via external files.
 
-**Diagram:**
+> **Limitation:** UI is terminal-only — unfriendly for non-technical users.
 
 ```
 user input ────► [ system.md + history + new input ] ─────────────► LLM API ───────────────────────┐
@@ -174,14 +157,10 @@ user input ────► [ system.md + history + new input ] ─────�
                                   └────── CLI ouput <──────┘
 ```
 
-**Limitation:**  
-UI is terminal-only — unfriendly for non-technical users.
-
 ---
 
 ### Stage 7 — Web UI & Containerize
 
-**Goal:**  
 Decouple interaction from execution by exposing the agent through a web interface.
 Portable via Docker.
 
