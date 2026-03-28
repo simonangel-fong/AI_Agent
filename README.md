@@ -148,7 +148,7 @@ Enable the LLM to interact with the external world by calling tools.
 > **Limitation:** System prompt is hardcoded — behavior cannot change without modifying source code.
 
 ```
-user input ────► [ system.md + history + new prompt ] ─────────────► LLM API ──────────────────────┐
+user input ─────► [ system.md + history + new prompt ] ─────────────► LLM API ──────────────────────┐
                                   ▲                                                                 │
                                   ├──────────────────────────────── text ───────────────────────────┘
                                   │                                                                 │
@@ -186,7 +186,7 @@ Expose the agent through a web interface. Portable via Docker.
 ```
                   ┌─ Docker ──────────────────────────────────────────────────────────────────────┐
                   │                                                                               │
-User input ──► Web UI ──► [ system.md + history + new input ] ──────► LLM API ─────────────────┐ │
+User input ───► Web UI ──► [ system.md + history + new input ] ──────► LLM API ─────────────────┐ │
                   │                        ▲                                                    │ │
                   │                        ├───────────────────────── text ─────────────────────┘ │
                   │                        │                                                    │ │
@@ -202,7 +202,7 @@ User input ──► Web UI ──► [ system.md + history + new input ] ──
 
 ## The Bigger Picture
 
-Think of `LLMs` the way you think of `relational databases`.
+Think of `LLMs` the way of `relational databases`.
 
 `Relational databases` unlocked enormous business value — but only once the ecosystem caught up: `SQL` gave a structured way to interact with them, `ETL` pipelines handled data ingestion, `stored procedures` encoded business logic.
 
