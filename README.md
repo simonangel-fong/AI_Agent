@@ -193,7 +193,7 @@ User input ──► Web UI ──► [ system.md + history + new input ] ──
                   └───────────────────────────────────────────────────────────────────────────────┘
 ```
 
-![pic](./assets/image/v07_04.png)
+![pic](./assets/image/v07_10.png)
 
 ---
 
