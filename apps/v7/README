@@ -1,8 +1,10 @@
 # Test
 
 ```sh
-cd apps/v7
-uvicorn main:app --reload
+# test agent
+cd apps/v8/app/agent
+python agent.py
+
 ```
 
 - Prompt to test
@@ -16,31 +18,43 @@ what is 1 + 1?
 
 What is my last question?
 
-Is google.com connectable?
+Is google.com connectable? show me the details of ping command
 
 What is the weather in NYC?
 
 how many skills do you have?
-
-Create a file named "weather.txt" and write the wind speed data.
 ```
 
-![pic](./pic/v07_01.png)
+---
 
-![pic](./pic/v07_02.png)
+## Web UI Test
 
-![pic](./pic/v07_03.png)
+```sh
+cd  apps/v8/app
+uvicorn main:app --reload
 
-![pic](./pic/v07_04.png)
+docker compose -f apps/v8/docker-compose.yaml up -d --build
+```
 
-![pic](./pic/v07_05.png)
+---
 
-![pic](./pic/v07_06.png)
+## Push to ECR
 
-![pic](./pic/v07_07.png)
+```sh
+# login
+aws ecr get-login-password --region ca-central-1 | docker login --username AWS --password-stdin 099139718958.dkr.ecr.ca-central-1.amazonaws.com
 
-![pic](./pic/v07_08.png)
+# create repo
+aws ecr create-repository --repository-name ai-agent --region ca-central-1
 
-![pic](./pic/v07_09.png)
+# Push
+docker build -t ai_agent_demo apps/v8
+# tag
+docker tag ai_agent_demo 099139718958.dkr.ecr.ca-central-1.amazonaws.com/ai-agent
+# push to docker
+docker push 099139718958.dkr.ecr.ca-central-1.amazonaws.com/ai-agent
 
-![pic](./pic/v07_10.png)
+# tag 
+docker tag ai_agent_demo simonangelfong/ai-agent
+docker push simonangelfong/ai-agent
+```
