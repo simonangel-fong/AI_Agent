@@ -1,0 +1,37 @@
+
+```sh
+cd apps
+python -m venv .venv
+python.exe -m pip install --upgrade pip
+pip install anthropic
+pip install python-dotenv
+pip install requests
+pip install "fastapi[standard]"
+pip install uvicorn
+
+# stage1
+python apps/v1/main.py
+
+# stage2
+python apps/v2/main.py
+
+# stage3
+python apps/v3/main.py
+
+# stage4
+python apps/v4/main.py
+
+# stage5
+python apps/v5/main.py
+
+# stage6
+cd apps/v6
+python main.py
+
+# stage7
+cd  apps/v7/app
+uvicorn main:app --reload
+
+docker compose up -d --build
+docker compose down -v
+```

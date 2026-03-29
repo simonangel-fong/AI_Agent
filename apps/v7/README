@@ -33,7 +33,7 @@ how many skills do you have?
 cd  apps/v7/app
 uvicorn main:app --reload
 
-docker compose -f apps/v8/docker-compose.yaml up -d --build
+docker compose -f apps/v7/docker-compose.yaml up -d --build
 ```
 
 ---
@@ -48,7 +48,7 @@ aws ecr get-login-password --region ca-central-1 | docker login --username AWS -
 aws ecr create-repository --repository-name ai-agent --region ca-central-1
 
 # Push
-docker build -t ai_agent_demo apps/v8
+docker build -t ai_agent_demo apps/v7
 # tag
 docker tag ai_agent_demo aws_id.dkr.ecr.ca-central-1.amazonaws.com/ai-agent
 # push to docker
